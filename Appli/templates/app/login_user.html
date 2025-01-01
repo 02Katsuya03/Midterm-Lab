@@ -1,0 +1,39 @@
+{% extends 'app/login_base.html' %}
+
+{% block content %}
+{% if messages %}
+<div class="message-container">
+    <ul class="message-list">
+        {% for message in messages %}
+        <li class="message-box {% if message.tags %}{{ message.tags }}{% endif %}">
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+
+    <div>
+        <label for="id_username">Username:</label>
+        {{ form.username }}
+    </div>
+
+    <div>
+        <label for="id_password">Password:</label>
+        {{ form.password }}
+    </div>
+
+    <div>
+        <label for="id_school">School:</label>
+        {{ form.school }}
+    </div>
+
+
+    {{ form.role }}
+
+    <button type="submit" class="login-button1">Sign In as User</button>
+</form>
+
+{% endblock content %}
